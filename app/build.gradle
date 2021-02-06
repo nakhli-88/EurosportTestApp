@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.nakhli.testeurosport"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "SERVICE_URL", "\"https://extendsclass.com/\""
+            resValue("string", "DB_PASSWORD_eurosport_database", "password")
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVICE_URL", "\"https://extendsclass.com/\""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(":domain")
+    implementation project(':data')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    // Architecture Component
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    //RxJava 2
+    api "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    api "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+
+    // Koin AndroidX
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+
+    // Logs management
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
+    // Debug database
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "org.assertj:assertj-core:$assertj_version"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    //ExoPlayer
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer_version"
+}
