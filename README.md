@@ -1,5 +1,5 @@
 # EuroSport@Nakhli
-Test for EuroSport : Clean Archi, MVVM, Rxjava, liveData, Koin
+Test for EuroSport : Clean Archi, MVVM, Rxjava, ArchitectureComponent(LifeCycle, LiveData, Room, ViewModel), Koin
 
 # EuroSport@Nakhli
 Test for EuroSport : Clean Architecture, MVVM, Rxjava, liveData, LifeCycle, Koin, Unit Test, ExoPlayer, Retrofit
